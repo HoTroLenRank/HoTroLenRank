@@ -36,9 +36,9 @@
             <div class="flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <div class="bg-black text-white px-3 py-1.5 text-lg font-black tracking-wider border-2 border-black rounded-xl">
+                        HỖ TRỢ
                     </div>
-                    
-                    <h1 class="text-base md:text-xl font-black uppercase tracking-widest">HỖ TRỢ LÊN RANK</h1>
+                    <h1 class="text-base md:text-xl font-black uppercase tracking-widest">LÊN RANK FREE FIRE</h1>
                 </div>
 
                 <div id="headerUserNav" class="flex items-center gap-3 hidden">
@@ -159,7 +159,8 @@
                             <label class="block font-black text-sm uppercase mb-2">3. BẢNG GIÁ & SỐ LƯỢNG:</label>
                             
                             <div class="relative grid grid-cols-1 md:grid-cols-2 border-4 border-black rounded-xl bg-white overflow-hidden gap-0">
-                                <div id="modeSliderBg" class="absolute top-0 bottom-0 w-1/2 bg-black smooth-transition z-0 hidden md:block" style="left: 0%;"></div>
+                                <!-- Fix Mobile: nền trượt phủ full chiều rộng/cao 50% khi trên di động, và 50% chiều rộng/100% cao khi trên desktop -->
+                                <div id="modeSliderBg" class="absolute w-full h-1/2 md:w-1/2 md:h-full bg-black smooth-transition z-0" style="left: 0%; top: 0%;"></div>
                                 
                                 <!-- Ô Tử Chiến -->
                                 <div id="colTuChien" onclick="selectMode('tu_chien')" class="relative z-10 p-5 cursor-pointer flex flex-col justify-between smooth-transition">
@@ -332,6 +333,10 @@
             selectMode('sinh_ton');
             selectBooster('MQuânGF');
         };
+
+        window.addEventListener('resize', () => {
+            selectMode(selectedMode);
+        });
 
         function showNotification(title, message, isSuccess = true) {
             document.getElementById('notificationTitle').innerText = title;
@@ -510,8 +515,17 @@
             const badgeTC = document.getElementById('badgeTuChien');
             const badgeST = document.getElementById('badgeSinhTon');
 
+            const isMobile = window.innerWidth < 768;
+
             if (mode === 'sinh_ton') {
-                slider.style.left = '50%';
+                if (isMobile) {
+                    slider.style.left = '0%';
+                    slider.style.top = '50%';
+                } else {
+                    slider.style.left = '50%';
+                    slider.style.top = '0%';
+                }
+
                 titleST.classList.remove('text-red-700');
                 titleST.classList.add('text-white');
                 priceST.classList.remove('text-black');
@@ -524,7 +538,14 @@
                 priceTC.classList.add('text-black');
                 badgeTC.classList.add('hidden');
             } else {
-                slider.style.left = '0%';
+                if (isMobile) {
+                    slider.style.left = '0%';
+                    slider.style.top = '0%';
+                } else {
+                    slider.style.left = '0%';
+                    slider.style.top = '0%';
+                }
+
                 titleTC.classList.remove('text-blue-700');
                 titleTC.classList.add('text-white');
                 priceTC.classList.remove('text-black');
