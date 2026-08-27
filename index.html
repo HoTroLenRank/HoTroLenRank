@@ -193,12 +193,12 @@
                                     </div>
 
                                     <div class="flex items-center justify-between bg-white border-2 border-black rounded-xl p-2 brutal-shadow-sm mt-2">
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', -10)" class="w-8 h-8 bg-white hover:bg-red-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">-</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', -20)" class="w-8 h-8 bg-white hover:bg-red-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">-</button>
                                         <div class="text-center">
-                                            <span id="displaySinhTon" class="font-black text-lg">50</span>
+                                            <span id="displaySinhTon" class="font-black text-lg">20</span>
                                             <span class="font-bold text-xs ml-1">điểm</span>
                                         </div>
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', 10)" class="w-8 h-8 bg-red-500 text-white hover:bg-red-600 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">+</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', 20)" class="w-8 h-8 bg-red-500 text-white hover:bg-red-600 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -314,7 +314,7 @@
         let selectedBooster = 'MQuânGF'; 
         
         let tuChienStars = 10;
-        let sinhTonPoints = 50;
+        let sinhTonPoints = 20;
 
         let GOOGLE_WEB_APP_URL = localStorage.getItem('ff_sheet_url') || 'https://script.google.com/macros/s/AKfycbxCMXWa2sNsE3US822zz-fXa07p6sMCpFUplHG341p9CQUs-hbnFpvR2qJvfB3gO84G9A/exec';
 
@@ -575,11 +575,11 @@
                 }
             } else {
                 sinhTonPoints += delta;
-                if (sinhTonPoints < 50) sinhTonPoints = 50;
+                if (sinhTonPoints < 20) sinhTonPoints = 20;
                 if (sinhTonPoints > 5000) sinhTonPoints = 5000;
                 document.getElementById('displaySinhTon').innerText = sinhTonPoints;
 
-                let currentPrice = sinhTonPoints * 400;
+                let currentPrice = sinhTonPoints * 1000;
                 document.getElementById('priceSinhTon').innerText = currentPrice.toLocaleString('vi-VN') + " VNĐ";
                 if (selectedMode === 'sinh_ton') {
                     document.getElementById('stickyPriceText').innerText = currentPrice.toLocaleString('vi-VN') + " VNĐ";
@@ -592,7 +592,7 @@
             if (mode === 'tu_chien') {
                 currentPrice = tuChienStars * 2000;
             } else {
-                currentPrice = sinhTonPoints * 400;
+                currentPrice = sinhTonPoints * 1000;
             }
             document.getElementById('stickyPriceText').innerText = currentPrice.toLocaleString('vi-VN') + " VNĐ";
         }
@@ -648,7 +648,7 @@
             const modeName = selectedMode === 'sinh_ton' ? 'Sinh Tồn (BR)' : 'Tử Chiến (CS)';
             
             let quantity = selectedMode === 'tu_chien' ? tuChienStars : sinhTonPoints;
-            let currentPrice = selectedMode === 'tu_chien' ? (quantity * 2000) : (quantity * 400);
+            let currentPrice = selectedMode === 'tu_chien' ? (quantity * 2000) : (quantity * 1000);
             let packageText = selectedMode === 'tu_chien' ? `Tử Chiến - ${quantity} sao` : `Sinh Tồn - ${quantity} điểm`;
 
             const cardInfoText = `[MÃ THẺ: ${check1.cleanCode}]`;
@@ -712,7 +712,7 @@
         function resetToOrderScreen() {
             document.getElementById('orderForm').reset();
             tuChienStars = 10;
-            sinhTonPoints = 50;
+            sinhTonPoints = 20;
             document.getElementById('displayTuChien').innerText = tuChienStars;
             document.getElementById('displaySinhTon').innerText = sinhTonPoints;
             showOrderScreen();
