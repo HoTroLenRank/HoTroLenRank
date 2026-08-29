@@ -2,15 +2,20 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hỗ Trợ Lên Rank </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hỗ Trợ Lên Rank Free Fire</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
         body {
             box-sizing: border-box;
-            background-color: #ffffff; /* Đã đổi sang nền màu trắng */
+            background-color: #ffffff;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
         .smooth-transition {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,9 +30,14 @@
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0px 0px #000000;
         }
+        /* Hỗ trợ hiển thị mượt trên Safari iOS */
+        input, button, select, textarea {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
     </style>
 </head>
-<body class="text-black min-h-screen p-2 md:p-6 font-mono">
+<body class="text-black min-h-screen p-2 md:p-6">
 
     <div class="max-w-4xl mx-auto bg-white border-4 md:border-8 border-black rounded-2xl brutal-shadow flex flex-col justify-between min-h-[92vh] overflow-hidden">
 
@@ -46,13 +56,13 @@
                     <span id="userGreeting" style="background-color: #ffb300;" class="font-bold text-xs md:text-sm text-black px-3 py-1.5 border-2 border-black rounded-xl brutal-shadow-sm max-w-[150px] sm:max-w-xs truncate inline-block">
                         Chào, Guest
                     </span>
-                    <button onclick="logout()" class="bg-white hover:bg-black hover:text-white text-black font-bold text-xs uppercase px-3 py-1.5 border-2 border-black rounded-xl brutal-shadow-sm shrink-0 smooth-transition">
+                    <button type="button" onclick="logout()" class="bg-white hover:bg-black hover:text-white text-black font-bold text-xs uppercase px-3 py-1.5 border-2 border-black rounded-xl brutal-shadow-sm shrink-0 smooth-transition cursor-pointer">
                         Đăng Xuất
                     </button>
                 </div>
                 
                 <div class="flex items-center gap-2">
-                    <button onclick="toggleConfigModal()" class="text-xs bg-white hover:bg-amber-400 hover:text-black font-bold px-3 py-1.5 border-2 border-black rounded-xl brutal-shadow-sm smooth-transition">
+                    <button type="button" onclick="toggleConfigModal()" class="text-xs bg-white hover:bg-amber-400 hover:text-black font-bold px-3 py-1.5 border-2 border-black rounded-xl brutal-shadow-sm smooth-transition cursor-pointer">
                         ⚙️ Cấu Hình Link
                     </button>
                 </div>
@@ -70,10 +80,10 @@
                     <div class="relative flex border-4 border-black rounded-xl mb-6 bg-white overflow-hidden h-14">
                         <div id="authSliderBg" class="absolute top-0 bottom-0 w-1/2 bg-black smooth-transition z-0" style="left: 0%;"></div>
                         
-                        <button id="tabLoginBtn" onclick="switchAuthTab('login')" style="color: #ffffff;" class="relative z-10 flex-1 py-3 text-center font-black text-base md:text-lg uppercase text-white smooth-transition">
+                        <button type="button" id="tabLoginBtn" onclick="switchAuthTab('login')" style="color: #ffffff;" class="relative z-10 flex-1 py-3 text-center font-black text-base md:text-lg uppercase text-white smooth-transition cursor-pointer">
                             Đăng Nhập
                         </button>
-                        <button id="tabRegisterBtn" onclick="switchAuthTab('register')" class="relative z-10 flex-1 py-3 text-center font-black text-base md:text-lg uppercase text-black smooth-transition">
+                        <button type="button" id="tabRegisterBtn" onclick="switchAuthTab('register')" class="relative z-10 flex-1 py-3 text-center font-black text-base md:text-lg uppercase text-black smooth-transition cursor-pointer">
                             Đăng Ký
                         </button>
                     </div>
@@ -91,7 +101,7 @@
                         <div id="loginError" class="hidden bg-red-500 text-white p-3 rounded-xl font-bold text-xs border-2 border-black">
                             ❌ Tài khoản hoặc mật khẩu không chính xác!
                         </div>
-                        <button type="submit" style="background-color: #ff5722;" class="w-full py-4 text-white hover:bg-black font-black text-lg border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition">
+                        <button type="submit" style="background-color: #ff5722;" class="w-full py-4 text-white hover:bg-black font-black text-lg border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition cursor-pointer">
                             ĐĂNG NHẬP
                         </button>
                     </form>
@@ -111,7 +121,7 @@
                             <input type="password" id="regConfirmPassword" required placeholder="Nhập lại mật khẩu" class="w-full bg-white border-2 border-black rounded-xl p-3 font-bold focus:outline-none focus:bg-amber-50 smooth-transition">
                         </div>
                         <div id="regError" class="hidden bg-red-500 text-white p-3 rounded-xl font-bold text-xs border-2 border-black"></div>
-                        <button type="submit" style="background-color: #10b981;" class="w-full py-4 hover:bg-black hover:text-white text-black font-black text-lg border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition">
+                        <button type="submit" style="background-color: #10b981;" class="w-full py-4 hover:bg-black hover:text-white text-black font-black text-lg border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition cursor-pointer">
                             TẠO TÀI KHOẢN
                         </button>
                     </form>
@@ -137,13 +147,13 @@
                             <div class="relative grid grid-cols-3 border-4 border-black rounded-xl bg-white overflow-hidden p-1 gap-1">
                                 <div id="boosterSliderBg" class="absolute top-1 bottom-1 w-[calc(33.333%-4px)] bg-black rounded-lg smooth-transition z-0" style="left: 4px;"></div>
 
-                                <button type="button" id="btnBooster1" onclick="selectBooster('MQuânGF')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-white smooth-transition">
+                                <button type="button" id="btnBooster1" onclick="selectBooster('MQuânGF')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-white smooth-transition cursor-pointer">
                                     MQuânGF
                                 </button>
-                                <button type="button" id="btnBooster2" onclick="selectBooster('Zhi Yǒng')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-black smooth-transition">
+                                <button type="button" id="btnBooster2" onclick="selectBooster('Zhi Yǒng')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-black smooth-transition cursor-pointer">
                                     Zhi Yǒng
                                 </button>
-                                <button type="button" id="btnBooster3" onclick="selectBooster('e khoa 36?')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-black smooth-transition">
+                                <button type="button" id="btnBooster3" onclick="selectBooster('e khoa 36?')" class="relative z-10 py-3 text-center font-black text-xs md:text-sm uppercase text-black smooth-transition cursor-pointer">
                                     e khoa 36?
                                 </button>
                             </div>
@@ -174,12 +184,12 @@
                                     </div>
                                     
                                     <div class="flex items-center justify-between bg-white text-black border-2 border-black rounded-xl p-2 brutal-shadow-sm mt-2">
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('tu_chien', -10)" class="w-8 h-8 bg-white hover:bg-amber-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">-</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('tu_chien', -10)" class="w-8 h-8 bg-white hover:bg-amber-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition cursor-pointer">-</button>
                                         <div class="flex items-center gap-1 justify-center">
                                             <span id="textTuChien" class="font-black text-lg px-2">40</span>
                                             <span class="font-bold text-xs">sao</span>
                                         </div>
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('tu_chien', 10)" style="background-color: #ff5722;" class="w-8 h-8 text-white border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">+</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('tu_chien', 10)" style="background-color: #ff5722;" class="w-8 h-8 text-white border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition cursor-pointer">+</button>
                                     </div>
                                 </div>
 
@@ -194,12 +204,12 @@
                                     </div>
 
                                     <div class="flex items-center justify-between bg-white text-black border-2 border-black rounded-xl p-2 brutal-shadow-sm mt-2">
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', -10)" class="w-8 h-8 bg-white hover:bg-amber-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">-</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', -10)" class="w-8 h-8 bg-white hover:bg-amber-200 border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition cursor-pointer">-</button>
                                         <div class="flex items-center gap-1 justify-center">
                                             <span id="textSinhTon" class="font-black text-lg px-2">40</span>
                                             <span class="font-bold text-xs">điểm</span>
                                         </div>
-                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', 10)" style="background-color: #ff5722;" class="w-8 h-8 text-white border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition">+</button>
+                                        <button type="button" onclick="event.stopPropagation(); changeQuantity('sinh_ton', 10)" style="background-color: #ff5722;" class="w-8 h-8 text-white border-2 border-black rounded-lg font-black text-lg flex items-center justify-center brutal-btn smooth-transition cursor-pointer">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +232,7 @@
                         <div id="cardCheckError" class="hidden bg-red-500 text-white rounded-xl p-3 font-bold text-xs border-2 border-black leading-relaxed"></div>
 
                         <!-- Nút gửi đơn Desktop -->
-                        <button type="submit" id="btnSubmitOrder" style="background-color: #ff5722;" class="btnSubmitOrder hidden md:flex w-full py-4 text-white hover:bg-black font-black text-xl border-4 border-black rounded-xl brutal-shadow brutal-btn uppercase items-center justify-center gap-2 smooth-transition">
+                        <button type="submit" id="btnSubmitOrder" style="background-color: #ff5722;" class="btnSubmitOrder hidden md:flex w-full py-4 text-white hover:bg-black font-black text-xl border-4 border-black rounded-xl brutal-shadow brutal-btn uppercase items-center justify-center gap-2 smooth-transition cursor-pointer">
                             <span class="btnSubmitText">GỬI ĐƠN </span>
                             <i class="btnSpinner fa-solid fa-spinner fa-spin hidden"></i>
                         </button>
@@ -243,7 +253,7 @@
                     </h2>
 
                     <p class="text-sm font-bold text-slate-700 max-w-md mx-auto leading-relaxed border-2 border-black rounded-xl p-4 bg-amber-50">
-                        
+                        Đơn hàng của bạn đã được gửi thành công. Người hỗ trợ sẽ duyệt và xử lý đơn trong thời gian sớm nhất!
                     </p>
 
                     <div class="text-left border-2 border-black rounded-xl p-4 space-y-2 text-xs font-bold bg-white">
@@ -255,7 +265,7 @@
                         <p>• Trạng Thái: <span class="text-amber-600 font-black">⌛ Thành Công</span></p>
                     </div>
 
-                    <button onclick="resetToOrderScreen()" class="w-full py-4 bg-black text-white hover:bg-amber-400 hover:text-black font-black text-base border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition">
+                    <button type="button" onclick="resetToOrderScreen()" class="w-full py-4 bg-black text-white hover:bg-amber-400 hover:text-black font-black text-base border-2 border-black rounded-xl brutal-shadow brutal-btn uppercase smooth-transition cursor-pointer">
                         ➕ ĐẶT ĐƠN KHÁC
                     </button>
                 </div>
@@ -275,7 +285,7 @@
             <p class="text-[10px] font-black uppercase text-slate-600">Thanh toán:</p>
             <p id="stickyPriceText" style="color: #ff5722;" class="text-base font-black">20,000 VNĐ</p>
         </div>
-        <button type="button" onclick="triggerMobileSubmit()" style="background-color: #ff5722;" class="btnSubmitOrder flex-1 py-3 text-white font-black text-sm uppercase border-2 border-black rounded-xl brutal-shadow-sm flex items-center justify-center gap-2 smooth-transition">
+        <button type="button" onclick="triggerMobileSubmit()" style="background-color: #ff5722;" class="btnSubmitOrder flex-1 py-3 text-white font-black text-sm uppercase border-2 border-black rounded-xl brutal-shadow-sm flex items-center justify-center gap-2 smooth-transition cursor-pointer">
             <span class="btnSubmitText">GỬI ĐƠN NGAY</span>
             <i class="btnSpinner fa-solid fa-spinner fa-spin hidden"></i>
             <i class="fa-solid fa-arrow-right"></i>
@@ -294,8 +304,8 @@
             <input type="url" id="webAppUrlInput" placeholder="https://script.google.com/macros/s/.../exec" class="w-full bg-white border-2 border-black rounded-xl p-3 text-xs font-bold focus:outline-none focus:bg-amber-50 smooth-transition">
 
             <div class="flex justify-end gap-3 pt-2">
-                <button onclick="toggleConfigModal()" class="px-4 py-2 bg-white hover:bg-slate-200 border-2 border-black rounded-xl font-bold text-xs uppercase smooth-transition">Hủy</button>
-                <button onclick="saveWebAppUrl()" style="background-color: #ff5722;" class="px-4 py-2 text-white hover:bg-black border-2 border-black rounded-xl font-bold text-xs uppercase smooth-transition">Lưu Cấu Hình</button>
+                <button type="button" onclick="toggleConfigModal()" class="px-4 py-2 bg-white hover:bg-slate-200 border-2 border-black rounded-xl font-bold text-xs uppercase smooth-transition cursor-pointer">Hủy</button>
+                <button type="button" onclick="saveWebAppUrl()" style="background-color: #ff5722;" class="px-4 py-2 text-white hover:bg-black border-2 border-black rounded-xl font-bold text-xs uppercase smooth-transition cursor-pointer">Lưu Cấu Hình</button>
             </div>
         </div>
     </div>
@@ -306,7 +316,7 @@
             <div id="notificationIcon" class="w-12 h-12 bg-amber-400 text-black border-2 border-black rounded-xl mx-auto flex items-center justify-center text-xl font-black">ℹ</div>
             <h4 id="notificationTitle" class="font-black text-base uppercase">THÔNG BÁO HỆ THỐNG</h4>
             <p id="notificationMessage" class="text-xs font-bold text-slate-700 leading-relaxed"></p>
-            <button onclick="closeNotification()" class="w-full py-3 bg-black text-white hover:bg-amber-400 hover:text-black font-black text-sm uppercase border-2 border-black rounded-xl smooth-transition">
+            <button type="button" onclick="closeNotification()" class="w-full py-3 bg-black text-white hover:bg-amber-400 hover:text-black font-black text-sm uppercase border-2 border-black rounded-xl smooth-transition cursor-pointer">
                 ĐÃ HIỂU
             </button>
         </div>
@@ -331,7 +341,8 @@
 
         window.onload = function() {
             if (GOOGLE_WEB_APP_URL) {
-                document.getElementById('webAppUrlInput').value = GOOGLE_WEB_APP_URL;
+                const inputUrl = document.getElementById('webAppUrlInput');
+                if (inputUrl) inputUrl.value = GOOGLE_WEB_APP_URL;
             }
 
             const savedUser = localStorage.getItem('ff_current_user');
@@ -372,7 +383,11 @@
         }
 
         function getUsersDB() {
-            return JSON.parse(localStorage.getItem('ff_registered_users') || '{}');
+            try {
+                return JSON.parse(localStorage.getItem('ff_registered_users') || '{}');
+            } catch (err) {
+                return {};
+            }
         }
 
         function saveUsersDB(db) {
@@ -415,7 +430,7 @@
         }
 
         function handleRegister(e) {
-            e.preventDefault();
+            if (e && e.preventDefault) e.preventDefault();
             const username = document.getElementById('regUsername').value.trim();
             const pass = document.getElementById('regPassword').value;
             const confirmPass = document.getElementById('regConfirmPassword').value;
@@ -424,14 +439,14 @@
             if (pass !== confirmPass) {
                 regError.innerText = "❌ Mật khẩu xác nhận không trùng khớp!";
                 regError.classList.remove('hidden');
-                return;
+                return false;
             }
 
             const db = getUsersDB();
             if (db[username]) {
                 regError.innerText = "❌ Tên người dùng này đã tồn tại!";
                 regError.classList.remove('hidden');
-                return;
+                return false;
             }
 
             db[username] = pass;
@@ -445,10 +460,11 @@
             document.getElementById('formRegister').reset();
             switchAuthTab('login');
             document.getElementById('loginUsername').value = username;
+            return false;
         }
 
         function handleLogin(e) {
-            e.preventDefault();
+            if (e && e.preventDefault) e.preventDefault();
             const username = document.getElementById('loginUsername').value.trim();
             const pass = document.getElementById('loginPassword').value;
             const loginError = document.getElementById('loginError');
@@ -459,13 +475,14 @@
                 loginError.className = "bg-red-500 text-white rounded-xl p-3 font-bold text-xs border-2 border-black";
                 loginError.innerText = "❌ Tài khoản hoặc mật khẩu không chính xác!";
                 loginError.classList.remove('hidden');
-                return;
+                return false;
             }
 
             loginError.classList.add('hidden');
             currentUser = username;
             localStorage.setItem('ff_current_user', username);
             showOrderScreen();
+            return false;
         }
 
         function logout() {
@@ -612,36 +629,51 @@
             if (/^(\d)\1+$/.test(cleanCode)) {
                 return { valid: false, reason: "Mã thẻ gồm toàn chữ số trùng lặp!" };
             }
-            const usedCards = JSON.parse(localStorage.getItem('ff_used_cards') || '[]');
-            if (usedCards.includes(cleanCode)) {
-                return { valid: false, reason: "Mã thẻ này đã được sử dụng!" };
-            }
+            try {
+                const usedCards = JSON.parse(localStorage.getItem('ff_used_cards') || '[]');
+                if (usedCards.includes(cleanCode)) {
+                    return { valid: false, reason: "Mã thẻ này đã được sử dụng!" };
+                }
+            } catch (e) {}
             return { valid: true, cleanCode: cleanCode };
         }
 
+        // Tối ưu hóa kích hoạt gửi đơn hỗ trợ trơn tru trên iOS iPhone
         function triggerMobileSubmit() {
             const form = document.getElementById('orderForm');
             if (form) {
                 if (typeof form.requestSubmit === 'function') {
-                    form.requestSubmit();
+                    try {
+                        form.requestSubmit();
+                    } catch (e) {
+                        handleOrderSubmit(new Event('submit'));
+                    }
                 } else {
-                    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                    handleOrderSubmit(new Event('submit'));
                 }
             }
         }
 
         async function handleOrderSubmit(e) {
-            e.preventDefault();
+            if (e && e.preventDefault) e.preventDefault();
 
             const cardError = document.getElementById('cardCheckError');
             cardError.classList.add('hidden');
 
-            const card1 = document.getElementById('cardCode1').value.trim();
+            const gameIdInput = document.getElementById('gameIdInput');
+            if (!gameIdInput || !gameIdInput.value.trim()) {
+                cardError.innerText = "❌ LỖI: Vui lòng nhập UID game của bạn!";
+                cardError.classList.remove('hidden');
+                return false;
+            }
+
+            const card1Input = document.getElementById('cardCode1');
+            const card1 = card1Input ? card1Input.value.trim() : '';
             const check1 = validateGarenaCard(card1);
             if (!check1.valid) {
                 cardError.innerText = `❌ LỖI: ${check1.reason}`;
                 cardError.classList.remove('hidden');
-                return;
+                return false;
             }
 
             const btnTexts = document.querySelectorAll('.btnSubmitText');
@@ -654,7 +686,7 @@
 
             await new Promise(resolve => setTimeout(resolve, 800));
 
-            const gameId = document.getElementById('gameIdInput').value.trim();
+            const gameId = gameIdInput.value.trim();
             const modeName = selectedMode === 'sinh_ton' ? 'Sinh Tồn (BR)' : 'Tử Chiến (CS)';
             
             let quantity = selectedMode === 'tu_chien' ? tuChienStars : sinhTonPoints;
@@ -674,14 +706,16 @@
                 cardCode: check1.cleanCode
             };
 
-            const userOrdersKey = `ff_orders_${currentUser}`;
-            const userOrders = JSON.parse(localStorage.getItem(userOrdersKey) || '[]');
-            userOrders.unshift(orderItem);
-            localStorage.setItem(userOrdersKey, JSON.stringify(userOrders));
+            try {
+                const userOrdersKey = `ff_orders_${currentUser}`;
+                const userOrders = JSON.parse(localStorage.getItem(userOrdersKey) || '[]');
+                userOrders.unshift(orderItem);
+                localStorage.setItem(userOrdersKey, JSON.stringify(userOrders));
 
-            const usedCards = JSON.parse(localStorage.getItem('ff_used_cards') || '[]');
-            usedCards.push(check1.cleanCode);
-            localStorage.setItem('ff_used_cards', JSON.stringify(usedCards));
+                const usedCards = JSON.parse(localStorage.getItem('ff_used_cards') || '[]');
+                usedCards.push(check1.cleanCode);
+                localStorage.setItem('ff_used_cards', JSON.stringify(usedCards));
+            } catch (err) {}
 
             if (GOOGLE_WEB_APP_URL) {
                 try {
@@ -717,6 +751,7 @@
             document.getElementById('viewOrder').classList.add('hidden');
             document.getElementById('mobileStickyBar').classList.add('hidden');
             document.getElementById('viewSuccess').classList.remove('hidden');
+            return false;
         }
 
         function resetToOrderScreen() {
